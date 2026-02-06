@@ -1,0 +1,27 @@
+
+<apex:page >
+    <apex:includeLightning />
+
+    <script>
+        function openModal() {
+            $Lightning.use("c:reportViewerOutApp", function () {
+                $Lightning.createComponent(
+                    "c:reportViewer",
+                    {},
+                    "lwcContainer"
+                );
+            });
+        }
+
+        function receiveReportData(data) {
+            console.log('Data from LWC:', JSON.parse(data));
+        }
+    </script>
+
+    <apex:form >
+        <apex:commandButton value="Open Report Viewer" onclick="openModal(); return false;" />
+    </apex:form>
+
+    <div id="lwcContainer" style="margin-top:20px;"></div>
+</apex:page>
+                  
